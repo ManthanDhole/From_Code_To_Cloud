@@ -1,0 +1,311 @@
+.flights-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  
+  .flights-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    
+    .page-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 3rem;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 2rem;
+    }
+    
+    .filter-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      
+      .filter-btn {
+        padding: 10px 20px;
+        background: transparent;
+        border: 2px solid rgba(255, 215, 0, 0.5);
+        color: var(--text-gray);
+        font-weight: 600;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 25px;
+        
+        &.active, &:hover {
+          border-color: var(--accent-gold);
+          color: var(--accent-gold);
+          box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+      }
+    }
+  }
+  
+  .flights-grid {
+    display: grid;
+    gap: 2rem;
+    
+    .flight-card {
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: var(--gradient-gold);
+        transition: left 0.5s ease;
+      }
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+        
+        &::before {
+          left: 0;
+        }
+      }
+      
+      &.international {
+        border-left: 4px solid var(--accent-gold);
+      }
+      
+      .flight-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        
+        .airline-info {
+          .airline-name {
+            font-family: 'Orbitron', monospace;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+          }
+          
+          .flight-number {
+            color: var(--accent-gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+          }
+        }
+        
+        .flight-type-badge {
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          
+          &.domestic {
+            background: rgba(0, 255, 127, 0.2);
+            color: #00ff7f;
+            border: 1px solid #00ff7f;
+          }
+          
+          &.international {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+          }
+        }
+      }
+      
+      .flight-route {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        gap: 1rem;
+        
+        .departure, .arrival {
+          text-align: center;
+          
+          .city {
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+          }
+          
+          .time {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            font-weight: 700;
+          }
+        }
+        
+        .arrival {
+          text-align: right;
+        }
+        
+        .route-visual {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          
+          .route-line {
+            position: relative;
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), #ffed4e, var(--accent-gold));
+            margin-bottom: 0.5rem;
+            
+            .plane-icon {
+              position: absolute;
+              top: -8px;
+              left: 50%;
+              transform: translateX(-50%);
+              color: var(--accent-gold);
+              font-size: 1rem;
+              animation: planePulse 2s ease-in-out infinite;
+            }
+          }
+          
+          .duration {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            font-weight: 600;
+          }
+        }
+      }
+      
+      .flight-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: rgba(255, 215, 0, 0.05);
+        border-radius: 10px;
+        
+        .aircraft {
+          .label {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+          }
+          
+          .value {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-left: 0.5rem;
+          }
+        }
+        
+        .price {
+          display: flex;
+          align-items: baseline;
+          
+          .currency {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            margin-right: 0.2rem;
+          }
+          
+          .amount {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+          }
+        }
+      }
+      
+      .flight-actions {
+        text-align: center;
+        
+        .futuristic-btn {
+          width: 100%;
+          padding: 12px;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  
+  .no-flights {
+    text-align: center;
+    padding: 4rem 2rem;
+    
+    .empty-state {
+      .empty-icon {
+        font-size: 4rem;
+        color: var(--accent-gold);
+        margin-bottom: 1rem;
+        opacity: 0.5;
+      }
+      
+      h3 {
+        color: var(--text-light);
+        margin-bottom: 1rem;
+        font-family: 'Orbitron', monospace;
+      }
+      
+      p {
+        color: var(--text-gray);
+      }
+    }
+  }
+}
+
+@keyframes planePulse {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .flights-container {
+    padding: 1rem;
+    
+    .flights-header {
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .filter-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        
+        .filter-btn {
+          width: 200px;
+        }
+      }
+    }
+    
+    .flights-grid .flight-card {
+      padding: 1.5rem;
+      
+      .flight-route {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+        
+        .departure, .arrival {
+          text-align: center;
+        }
+        
+        .route-visual .route-line {
+          width: 80px;
+        }
+      }
+      
+      .flight-details {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+  }
+}

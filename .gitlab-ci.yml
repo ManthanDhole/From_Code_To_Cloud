@@ -1,0 +1,25 @@
+stages:
+  - demo-test
+  - build
+
+trial-test:
+  stage: demo-test
+  image: alpine:latest
+  tags: 
+   - demo-flight-website
+  script:
+    - pwd
+    - ls
+
+application-build-process:
+  stage: build
+  image: node:lts
+  tags: 
+   - demo-flight-website
+  script:
+    - cd flight-booking-application
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - ./flight-booking-application/dist/*

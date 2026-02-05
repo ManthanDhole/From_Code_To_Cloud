@@ -1,0 +1,80 @@
+.navbar {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--accent-gold);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    .logo-text {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.8rem;
+      font-weight: 900;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .plane-icon {
+      font-size: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+      color: var(--accent-gold);
+    }
+  }
+  
+  .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    
+    a {
+      color: var(--text-gray);
+      text-decoration: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-gold);
+        transition: width 0.3s ease;
+      }
+      
+      &:hover, &.active {
+        color: var(--accent-gold);
+        
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.main-content {
+  margin-top: 80px;
+  min-height: calc(100vh - 80px);
+}
