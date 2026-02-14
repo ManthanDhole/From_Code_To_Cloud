@@ -1,6 +1,6 @@
 ## What will you learn in this series?
 1. Software Development (FE: Angular)
-2. DevOps (Gitlab, Docker, Terraform, Chef, WSL, Scripting)
+2. DevOps (Gitlab, Docker, Terraform, Ansible, WSL, Scripting)
 3. Cloud Engineering: AWS (EC2, ECS, Route53, VPC, Subnets, Security Groups)
 4. Amazon Q (Artificial Intelligence Coding Assistance)
 5. Site Reliability Engineering: SRE (Prometheus, Grafana, AlertManager)
@@ -13,3 +13,4 @@
 
 1. [Gitlab Runner Configuration](./documentation/Gitlab_Runner_Configuration.md)
 2. [Infrastructure Automation using Terraform](./documentation/Infrastructure_Automation_using_Terraform.md)
+3. [Configuration Management using Ansible](./documentation/Configuration_Management_using_Ansible.md)
